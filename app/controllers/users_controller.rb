@@ -1,13 +1,10 @@
 class UsersController < ApplicationController
     def index
       @user = User.all
-      @user.each do |user|
-        puts "#{user[:first_name]} #{user[:last_name]} Age #{user[:age]}"
+      all_users = @user.map do |user|
+        "#{user[:first_name]} #{user[:last_name]} Age #{user[:age]}"
       end
-
-
-
-
+      render text: all_users.join("</br></br>"), status: 200
     end
 end
 
