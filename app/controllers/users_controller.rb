@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     def puts_all_users
       user = User.all
       all_users = user.map do |user|
-        "#{user[:first_name]} #{user[:last_name]} Age #{user[:age]}"
+        "#{user[:first_name]} #{user[:last_name]} Age #{user[:age]} #{params.inspect}"
       end
       render text: all_users.join("</br></br>"), status: 200
     end
@@ -17,3 +17,6 @@ class UsersController < ApplicationController
     end
 
 end
+
+# Given the url http://localhost:3000/users?first_name=s
+# I should see ALL users from the database where first_name starts with s.
